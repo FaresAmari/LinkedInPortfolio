@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fares Amari — Solutions Engineering Leader</title>
+<meta name="description" content="Solutions Engineering Leader with 10+ years directing pre-sales engineering, AI and cloud solution design, and enterprise POC initiatives at Microsoft and SHI.">
+<meta property="og:title" content="Fares Amari — Solutions Engineering Leader">
+<meta property="og:description" content="Technical sales leader specializing in AI, cloud architecture, and enterprise pre-sales strategy.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080A0F;
+    --surface: #0E1117;
+    --surface2: #141820;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.12);
+    --text: #E8EAF0;
+    --muted: #7A8299;
+    --accent: #4F8EF7;
+    --accent2: #C8A96E;
+    --white: #F4F5F8;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--black);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(8,10,15,0);
+    backdrop-filter: blur(0px);
+    transition: background 0.4s, backdrop-filter 0.4s, border-bottom 0.4s;
+    border-bottom: 1px solid transparent;
+  }
+  nav.scrolled {
+    background: rgba(8,10,15,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--white); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 6vw 6vh;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(79,142,247,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,142,247,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+  .hero-glow {
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, rgba(79,142,247,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute;
+    bottom: -5%;
+    left: -5%;
+    width: 40vw;
+    height: 40vw;
+    background: radial-gradient(circle, rgba(200,169,110,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    color: var(--muted);
+    text-transform: none;
+    margin-bottom: 1.75rem;
+    max-width: 680px;
+    line-height: 1.75;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(4rem, 10vw, 9rem);
+    font-weight: 500;
+    line-height: 0.95;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.9s 0.4s forwards;
+  }
+  .hero-name span { color: var(--accent2); }
+  .hero-title {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 300;
+    color: var(--muted);
+    margin-top: 1.5rem;
+    max-width: 520px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-metrics {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .metric-number {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1;
+  }
+  .metric-number .accent { color: var(--accent); }
+  .metric-label {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s 1s forwards;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: var(--accent);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #6ba3ff; transform: translateY(-1px); }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    background: transparent;
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border: 1px solid var(--border2);
+    border-radius: 2px;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+  .btn-secondary:hover { border-color: rgba(255,255,255,0.3); color: var(--white); transform: translateY(-1px); }
+
+  /* SECTIONS */
+  section { padding: 8rem 6vw; }
+  section:nth-child(even) { background: var(--surface); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .section-heading {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 3rem;
+  }
+  .section-heading em { color: var(--accent2); font-style: normal; }
+
+  /* SUMMARY */
+  #summary .inner {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 6rem;
+    align-items: start;
+  }
+  .summary-text {
+    font-size: 1.15rem;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1.85;
+  }
+  .summary-text p + p { margin-top: 1.2rem; }
+  .competency-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 2rem;
+  }
+  .competency-tag {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    border: 1px solid rgba(79,142,247,0.25);
+    padding: 0.35rem 0.8rem;
+    border-radius: 1px;
+    background: rgba(79,142,247,0.05);
+  }
+  .summary-aside { border-left: 1px solid var(--border2); padding-left: 3rem; }
+  .aside-stat {
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .aside-stat:first-child { padding-top: 0; }
+  .aside-stat:last-child { border-bottom: none; }
+  .aside-stat-num {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1;
+  }
+  .aside-stat-num .accent { color: var(--accent2); }
+  .aside-stat-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 0.4rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* ACHIEVEMENTS */
+  #achievements .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+  .achievement-card {
+    background: var(--surface2);
+    padding: 2.5rem;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .achievement-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 2px;
+    height: 0;
+    background: var(--accent);
+    transition: height 0.4s ease;
+  }
+  .achievement-card:hover { background: #161b26; }
+  .achievement-card:hover::before { height: 100%; }
+  .ach-number {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--accent2);
+    line-height: 1;
+    margin-bottom: 0.6rem;
+  }
+  .ach-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+  .ach-desc {
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* CAREER TIMELINE */
+  #career .timeline {
+    position: relative;
+    padding-left: 2rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--accent), var(--border) 80%);
+  }
+  .timeline-item {
+    position: relative;
+    padding: 0 0 4rem 3rem;
+    opacity: 0;
+    transform: translateX(-16px);
+    transition: opacity 0.6s, transform 0.6s;
+  }
+  .timeline-item.visible { opacity: 1; transform: translateX(0); }
+  .timeline-dot {
+    position: absolute;
+    left: -0.45rem;
+    top: 0.4rem;
+    width: 0.9rem;
+    height: 0.9rem;
+    border-radius: 50%;
+    background: var(--black);
+    border: 2px solid var(--accent);
+  }
+  .timeline-dot.gold { border-color: var(--accent2); }
+  .timeline-date {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  .timeline-role {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 0.15rem;
+  }
+  .timeline-company {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .timeline-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .timeline-bullets li {
+    font-size: 0.88rem;
+    color: var(--muted);
+    padding-left: 1.2rem;
+    position: relative;
+    line-height: 1.65;
+  }
+  .timeline-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.75rem;
+  }
+  .timeline-bullets li strong { color: var(--text); font-weight: 500; }
+
+  /* WIN STORIES */
+  #wins .stories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+  .story-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: border-color 0.25s;
+  }
+  .story-card:hover { border-color: var(--border2); }
+  .story-tag {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    color: var(--accent2);
+    text-transform: uppercase;
+  }
+  .story-title {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.25;
+  }
+  .story-block { display: flex; flex-direction: column; gap: 0.35rem; }
+  .story-block-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .story-block-text {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .story-outcome {
+    padding: 1rem 1.25rem;
+    background: rgba(79,142,247,0.06);
+    border-left: 2px solid var(--accent);
+    font-size: 0.85rem;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* SKILLS */
+  #skills .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+  }
+  .skill-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .skill-group-title {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    color: var(--accent2);
+    text-transform: uppercase;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .skill-tag {
+    font-size: 0.78rem;
+    color: var(--text);
+    border: 1px solid var(--border2);
+    padding: 0.3rem 0.7rem;
+    border-radius: 1px;
+    background: var(--surface2);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* TESTIMONIALS */
+  #testimonials .quote-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .quote-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: border-color 0.25s;
+  }
+  .quote-card:hover { border-color: var(--border2); }
+  .quote-mark {
+    font-family: var(--serif);
+    font-size: 3rem;
+    color: var(--accent2);
+    line-height: 0.6;
+    opacity: 0.5;
+  }
+  .quote-text {
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.75;
+    font-style: italic;
+  }
+  .quote-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+  }
+  .quote-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .quote-role {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  /* CONTACT + DOWNLOAD */
+  #contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .contact-heading {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+  .contact-heading em { color: var(--accent2); font-style: normal; display: block; }
+  .contact-sub {
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-top: 1.5rem;
+    line-height: 1.7;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2.5rem;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.88rem;
+    color: var(--text);
+    text-decoration: none;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .contact-link:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(79,142,247,0.04);
+  }
+  .contact-link-icon {
+    font-size: 1rem;
+    opacity: 0.6;
+  }
+  .contact-link-label { font-weight: 500; }
+  .contact-link-value { color: var(--muted); font-size: 0.8rem; }
+  .contact-actions { display: flex; flex-direction: column; gap: 1rem; }
+  .cta-block {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .cta-block-label {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .cta-block-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .cta-block-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+  /* FOOTER */
+  footer {
+    padding: 2.5rem 6vw;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-name {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--muted);
+  }
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.75); }
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s, transform 0.7s;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    #summary .inner { grid-template-columns: 1fr; gap: 3rem; }
+    .summary-aside { border-left: none; border-top: 1px solid var(--border2); padding-left: 0; padding-top: 2rem; }
+    #contact { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-metrics { flex-wrap: wrap; gap: 2rem; }
+    nav .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 5rem 1.5rem; }
+    #hero { padding: 0 1.5rem 5vh; }
+    footer { flex-direction: column; gap: 0.75rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">FA</a>
+  <ul class="nav-links">
+    <li><a href="#summary">About</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#career">Career</a></li>
+    <li><a href="#wins">Win Stories</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <p style="font-family:var(--mono);font-size:0.7rem;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;margin-bottom:0.75rem;opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.1s forwards;">Solutions Engineering Leader · AI &amp; Cloud Architecture</p>
+  <div class="hero-eyebrow" style="display:none;"></div>
+  <h1 class="hero-name">Fares <span>Amari</span></h1>
+  <p class="hero-title">Trusted advisor and pre-sales leader with 10+ years at Microsoft and SHI — known for deep technical credibility, customer-first empathy, and the courage to be transparent when it matters most.</p>
+  <p style="font-size:1rem;font-weight:500;color:var(--white);margin-top:1rem;letter-spacing:0.01em;opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.7s forwards;">Strategic technology — Measurable outcomes.</p>
+  <p style="font-size:0.88rem;font-weight:300;color:var(--muted);margin-top:0.4rem;max-width:500px;line-height:1.65;opacity:0;transform:translateY(16px);animation:fadeUp 0.8s 0.85s forwards;">Available for strategic IT consulting, executive advisory, and enterprise digital transformation engagements.</p>
+  <div class="hero-metrics">
+    <div class="metric">
+      <div class="metric-number"><span class="counter accent" data-target="200">0</span><span class="accent">%</span></div>
+      <div class="metric-label">Pipeline Growth</div>
+    </div>
+    <div class="metric">
+      <div class="metric-number">$<span class="counter" data-target="17">0</span>M<span style="font-size:1.5rem;color:var(--muted)">+</span></div>
+      <div class="metric-label">IT Spend Influenced</div>
+    </div>
+    <div class="metric">
+      <div class="metric-number"><span class="counter" data-target="75">0</span>K<span style="font-size:1.5rem;color:var(--muted)">+</span></div>
+      <div class="metric-label">Seats Migrated</div>
+    </div>
+    <div class="metric">
+      <div class="metric-number"><span class="counter" data-target="10">0</span><span style="font-size:1.5rem;color:var(--muted)">+</span></div>
+      <div class="metric-label">Years in Tech Sales</div>
+    </div>
+  </div>
+  <div class="hero-ctas">
+    <a href="#wins" class="btn-primary">View Win Stories ↓</a>
+    <a href="#contact" class="btn-secondary">Download Resume</a>
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section id="summary">
+  <div class="inner">
+    <div>
+      <div class="section-label">About</div>
+      <h2 class="section-heading">Where <em>technical depth</em> meets revenue impact</h2>
+      <div class="summary-text">
+        <p>I partner with enterprise sales organizations to win complex, multi-stakeholder deals — not by pitching features, but by architecting solutions that solve real business problems. My edge is the intersection of deep technical credibility and genuine customer empathy: I focus on whether solutions are truly right for the customer, not just whether they close a deal.</p>
+        <p>At Microsoft, I served as the senior technical lead across all major enterprise pursuits — coordinating 10+ cross-functional engineers, designing AI/Copilot POC environments, and facilitating C-suite workshops. Colleagues describe me as a trusted advisor who opens "new rooms of the house" with creative prospecting at accounts like LSU, University of Missouri, Tulane, SIU, and DeVry.</p>
+        <p>I'm recognized for having the courage to be transparent about trade-offs — even when the news isn't favorable — because that's what builds the relationships that move deals forward and keep customers coming back.</p>
+      </div>
+      <div class="competency-grid">
+        <span class="competency-tag">Pre-Sales Strategy</span>
+        <span class="competency-tag">POC Design &amp; Execution</span>
+        <span class="competency-tag">AI &amp; Cloud Architecture</span>
+        <span class="competency-tag">C-Suite Engagement</span>
+        <span class="competency-tag">Trusted Advisor</span>
+        <span class="competency-tag">Customer-First Mindset</span>
+        <span class="competency-tag">Team Mentoring</span>
+        <span class="competency-tag">SE Enablement</span>
+        <span class="competency-tag">RFP/RFI Response</span>
+        <span class="competency-tag">Pipeline Acceleration</span>
+        <span class="competency-tag">Creative Prospecting</span>
+      </div>
+    </div>
+    <div class="summary-aside">
+      <div class="aside-stat">
+        <div class="aside-stat-num">90<span class="accent">%</span></div>
+        <div class="aside-stat-desc">Improvement in renewal rates at SHI through deep technical alignment and consultative selling</div>
+      </div>
+      <div class="aside-stat">
+        <div class="aside-stat-num">50<span class="accent">%+</span></div>
+        <div class="aside-stat-desc">Of mentoring ring participants promoted within their first year at Microsoft</div>
+      </div>
+      <div class="aside-stat">
+        <div class="aside-stat-num">$2M<span class="accent">+</span></div>
+        <div class="aside-stat-desc">In new solution revenue from data center modernization initiatives as Field SE at SHI</div>
+      </div>
+      <div class="aside-stat">
+        <div class="aside-stat-num">15<span class="accent">%</span></div>
+        <div class="aside-stat-desc">YoY cloud expansion driven through technically differentiated proposals at Microsoft</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="reveal">
+    <div class="section-label">Key Achievements</div>
+    <h2 class="section-heading">Numbers that <em>tell the story</em></h2>
+  </div>
+  <div class="card-grid reveal">
+    <div class="achievement-card">
+      <div class="ach-number">90%+</div>
+      <div class="ach-label">Renewal Rate Improvement</div>
+      <div class="ach-desc">Applied deep technical knowledge of Microsoft, VMware, and Cisco stacks to restructure renewal conversations — turning renewals into expansions.</div>
+    </div>
+    <div class="achievement-card">
+      <div class="ach-number">$500K</div>
+      <div class="ach-label">New Solution Revenue</div>
+      <div class="ach-desc">Generated through strengthened vendor alliances, contributing to a 3× increase in joint account pipeline opportunities at SHI.</div>
+    </div>
+    <div class="achievement-card">
+      <div class="ach-number">$15M+</div>
+      <div class="ach-label">Annual IT Spend Influenced</div>
+      <div class="ach-desc">Guided technology investment decisions for 40+ enterprises and SLED accounts across Louisiana, Mississippi, and Florida.</div>
+    </div>
+    <div class="achievement-card">
+      <div class="ach-number">75K+</div>
+      <div class="ach-label">Licensed Seats Migrated</div>
+      <div class="ach-desc">Led large-scale telco Office 365 migration, standardizing collaboration on SharePoint, Teams, and OneDrive across the enterprise.</div>
+    </div>
+    <div class="achievement-card">
+      <div class="ach-number">90%+</div>
+      <div class="ach-label">Clinical System Adoption</div>
+      <div class="ach-desc">Led Citrix and Epic EMR integration at Ochsner Health, reducing patient record access time by 30% and transforming clinician workflows.</div>
+    </div>
+    <div class="achievement-card">
+      <div class="ach-number">30%</div>
+      <div class="ach-label">Win Rate Increase</div>
+      <div class="ach-desc">Collaborated with vendor engineering teams to capture detailed requirements — improving solution accuracy and win rates across services opportunities.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER TIMELINE -->
+<section id="career">
+  <div class="reveal">
+    <div class="section-label">Career</div>
+    <h2 class="section-heading">A decade of <em>upward trajectory</em></h2>
+  </div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot gold"></div>
+      <div class="timeline-date">June 2022 — October 2025</div>
+      <div class="timeline-role">Account Technology Strategist</div>
+      <div class="timeline-company">Microsoft · Redmond, Washington</div>
+      <ul class="timeline-bullets">
+        <li>Enterprise technical lead across all major pursuits, coordinating <strong>10+ dotted-line SEs and Services Engineers</strong> to drive 200% pipeline growth and 15% YoY cloud expansion.</li>
+        <li>Architected and led <strong>AI/Copilot proof-of-concept initiatives</strong> for enterprise customers — defining success criteria, designing end-to-end POC environments, presenting to C-suite stakeholders.</li>
+        <li>Founded a mentoring ring for <strong>11–15 Microsoft technologists</strong>; more than 50% of participants promoted within their first year.</li>
+        <li>Designed and facilitated <strong>technical and business workshops</strong> for C-suite and IT leadership, translating AI and cloud capabilities into actionable implementation roadmaps.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">July 2021 — June 2022</div>
+      <div class="timeline-role">Commercial Account Executive</div>
+      <div class="timeline-company">SHI · Austin, Texas</div>
+      <ul class="timeline-bullets">
+        <li>Applied deep technical knowledge of Microsoft, VMware, and Cisco stacks to improve <strong>renewal rates by 90+ percentage points</strong> and generate 30% uplift in recurring revenue.</li>
+        <li>Strengthened vendor alliances contributing to <strong>$500K+ in new solution revenue</strong> and a 3× increase in joint account pipeline.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">March 2018 — July 2021</div>
+      <div class="timeline-role">Enterprise Field Solutions Engineer</div>
+      <div class="timeline-company">SHI · Somerset, New Jersey</div>
+      <ul class="timeline-bullets">
+        <li>Delivered data center modernization initiatives contributing <strong>$2M+ in new solution revenue</strong> and measurable uptime improvements.</li>
+        <li>Influenced <strong>$15M+ in annual IT spend</strong> across 40+ enterprise and SLED accounts in LA, MS, and FL.</li>
+        <li>Coordinated co-sell solution architectures with channel partners generating <strong>$1.5M+ in partner pipeline</strong>.</li>
+        <li>Improved solution win rates by <strong>30%+</strong> through detailed requirements capture with vendor engineering teams.</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot gold"></div>
+      <div class="timeline-date">April 2014 — March 2018</div>
+      <div class="timeline-role">Enterprise Technical Account Manager</div>
+      <div class="timeline-company">Microsoft · Redmond, Washington</div>
+      <ul class="timeline-bullets">
+        <li>Owned technical relationships across a <strong>$2M+ enterprise account portfolio</strong>, delivering 15%+ YoY growth.</li>
+        <li>Designed post-deployment technical enablement programs ensuring successful adoption of Microsoft cloud solutions.</li>
+        <li>Led net-new enterprise pursuit strategy, securing <strong>two new logos</strong> in underserved market segments.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- WIN STORIES -->
+<section id="wins">
+  <div class="reveal">
+    <div class="section-label">Win Stories</div>
+    <h2 class="section-heading">Where strategy <em>met execution</em></h2>
+  </div>
+  <div class="stories reveal">
+    <div class="story-card">
+      <div class="story-tag">Healthcare · Epic EMR · Citrix</div>
+      <div class="story-title">Ochsner Health: Clinical Workflow Transformation</div>
+      <div class="story-block">
+        <div class="story-block-label">The Challenge</div>
+        <div class="story-block-text">A major regional health system needed to integrate Citrix and Epic EMR at scale — with direct impact on clinician workflows and patient care speed.</div>
+      </div>
+      <div class="story-block">
+        <div class="story-block-label">My Approach</div>
+        <div class="story-block-text">Served as senior technical lead and project manager. Architected the integration end-to-end, coordinated cross-functional deployment teams, and managed stakeholder communication from IT to clinical leadership.</div>
+      </div>
+      <div class="story-outcome">
+        <strong>Outcome:</strong> System adoption exceeded 90%. Clinical application deployment accelerated. Patient record access time reduced by 30%.
+      </div>
+    </div>
+
+    <div class="story-card">
+      <div class="story-tag">Telecommunications · Office 365 · Microsoft 365</div>
+      <div class="story-title">75,000-Seat M365 Migration</div>
+      <div class="story-block">
+        <div class="story-block-label">The Challenge</div>
+        <div class="story-block-text">A large telco needed to migrate tens of thousands of employees to Microsoft 365 — standardizing fragmented collaboration tools across a complex, distributed organization.</div>
+      </div>
+      <div class="story-block">
+        <div class="story-block-label">My Approach</div>
+        <div class="story-block-text">Led strategic discovery, executive workshops, and end-user training programs. Built a phased migration architecture minimizing operational disruption while accelerating adoption.</div>
+      </div>
+      <div class="story-outcome">
+        <strong>Outcome:</strong> 75,000+ licensed seats migrated. Collaboration standardized on SharePoint, Teams, and OneDrive. Operational efficiency and user engagement measurably improved.
+      </div>
+    </div>
+
+    <div class="story-card">
+      <div class="story-tag">Healthcare · Academic Medical Center · IT Strategy</div>
+      <div class="story-title">Multi-Year AMC IT Transformation</div>
+      <div class="story-block">
+        <div class="story-block-label">The Challenge</div>
+        <div class="story-block-text">An Academic Medical Center required a multi-year strategic IT plan — balancing cloud adoption, cost optimization, and operational reliability across a mission-critical environment.</div>
+      </div>
+      <div class="story-block">
+        <div class="story-block-label">My Approach</div>
+        <div class="story-block-text">Led strategic planning from enablement through consumption and cost optimization. Facilitated executive workshops to align IT investment with long-term clinical and operational goals.</div>
+      </div>
+      <div class="story-outcome">
+        <strong>Outcome:</strong> Improved system uptime. Enhanced budget forecasting and long-term IT investment sustainability across the organization.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="reveal">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-heading">The <em>toolkit</em></h2>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-group">
+      <div class="skill-group-title">Sales Methodology</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Pre-Sales Strategy</span>
+        <span class="skill-tag">MEDDIC</span>
+        <span class="skill-tag">Consultative Selling</span>
+        <span class="skill-tag">POC Design &amp; Execution</span>
+        <span class="skill-tag">RFP/RFI Response</span>
+        <span class="skill-tag">Pipeline Acceleration</span>
+        <span class="skill-tag">Co-Sell Motions</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Technology &amp; Architecture</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Microsoft Azure</span>
+        <span class="skill-tag">Microsoft 365</span>
+        <span class="skill-tag">Microsoft Copilot / AI</span>
+        <span class="skill-tag">SharePoint &amp; OneDrive</span>
+        <span class="skill-tag">Citrix</span>
+        <span class="skill-tag">Epic EMR</span>
+        <span class="skill-tag">VMware</span>
+        <span class="skill-tag">Cisco</span>
+        <span class="skill-tag">Cloud Architecture</span>
+        <span class="skill-tag">Data Center Modernization</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Leadership &amp; Enablement</div>
+      <div class="skill-tags">
+        <span class="skill-tag">SE Team Leadership</span>
+        <span class="skill-tag">Mentoring &amp; Coaching</span>
+        <span class="skill-tag">Executive Workshops</span>
+        <span class="skill-tag">C-Suite Engagement</span>
+        <span class="skill-tag">Cross-Functional Coordination</span>
+        <span class="skill-tag">Technical Enablement</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Industry Verticals</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Healthcare</span>
+        <span class="skill-tag">Oil &amp; Gas</span>
+        <span class="skill-tag">Utilities</span>
+        <span class="skill-tag">Manufacturing</span>
+        <span class="skill-tag">Higher Education</span>
+        <span class="skill-tag">Retail</span>
+        <span class="skill-tag">SLED</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Certifications</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Azure Fundamentals (AZ-900)</span>
+        <span class="skill-tag">Azure AI Fundamentals (AI-900)</span>
+        <span class="skill-tag">ITIL Foundations</span>
+        <span class="skill-tag">Epic Certified Systems Manager</span>
+        <span class="skill-tag">Rubrik Technical Professional</span>
+        <span class="skill-tag">Cohesity SE Professional</span>
+        <span class="skill-tag">Veeam Sales Professional</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="reveal">
+    <div class="section-label">360° Feedback</div>
+    <h2 class="section-heading">What <em>colleagues &amp; leaders</em> say</h2>
+  </div>
+  <div class="quote-grid reveal">
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">Fares is an exceptional communicator — his daily, high-quality coordination on customer issues, ownership of next steps, and ability to be a consummate partner to internal teams sets him apart. He elevates every conversation he joins.</div>
+      <div class="quote-author">
+        <div class="quote-name">Senior Sales Leader</div>
+        <div class="quote-role">Enterprise Accounts · Microsoft</div>
+      </div>
+    </div>
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">Fares has a fantastic ability to quickly ramp on new technologies like Azure and Copilot and translate them into clear guidance and actionable next steps for customers. He's a true thought partner — bringing new ideas, integrating multiple perspectives, and helping others grow through patience and mentorship.</div>
+      <div class="quote-author">
+        <div class="quote-name">Technical Colleague</div>
+        <div class="quote-role">Cloud Specialist · Microsoft</div>
+      </div>
+    </div>
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">Working with Fares is a genuine privilege. He has the courage to clearly outline risks and outcomes even when they're not favorable — and that transparency is exactly what builds the kind of trust that moves deals forward. He's an absolute gem.</div>
+      <div class="quote-author">
+        <div class="quote-name">Account Executive</div>
+        <div class="quote-role">Education Vertical · Microsoft</div>
+      </div>
+    </div>
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">Fares opened new rooms of the house with customers like LSU, University of Missouri, Tulane, and others through creative prospecting motions and deep relationship-building that navigated complex institutional politics. He's a rare asset for pipeline generation.</div>
+      <div class="quote-author">
+        <div class="quote-name">Sales Manager</div>
+        <div class="quote-role">Higher Education Accounts · Microsoft</div>
+      </div>
+    </div>
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">Fares is a true team player with a knack for collaboration across v-teams. He defines clear boundaries so presales stays focused on pipeline and revenue closure, while still supporting partner success and broader team goals — all while mentoring the people around him.</div>
+      <div class="quote-author">
+        <div class="quote-name">Partner Manager</div>
+        <div class="quote-role">Channel &amp; Alliances · Microsoft</div>
+      </div>
+    </div>
+    <div class="quote-card">
+      <div class="quote-mark">"</div>
+      <div class="quote-text">Fares has a customer-first mindset that is genuine, not performative. He asks whether a solution is truly right for the customer — not just whether it closes a deal. That empathy, combined with his technical depth, makes him one of the most trusted advisors I've seen in the field.</div>
+      <div class="quote-author">
+        <div class="quote-name">Senior Leader</div>
+        <div class="quote-role">Enterprise Technical Sales · Microsoft</div>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:0.75rem;color:var(--muted);margin-top:2rem;font-family:var(--mono);letter-spacing:0.05em;">Sourced from Microsoft 360° peer review and customer feedback. Full LinkedIn recommendations available on request.</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding: 8rem 6vw;">
+  <div class="section-label">Get in Touch</div>
+  <div class="contact-heading" style="margin-bottom:1rem;">
+    Let's talk about
+    <em>revenue.</em>
+  </div>
+  <p class="contact-sub" style="margin-bottom:3rem;">Open to senior Solutions Engineering, Pre-Sales leadership, and AI/cloud strategy roles. Find me on LinkedIn and let's connect!</p>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;">
+
+    <!-- Card 1: Profile -->
+    <div style="display:flex;flex-direction:column;align-items:center;gap:1rem;padding:2.5rem 1.5rem;background:var(--surface2);border:1px solid var(--border);text-align:center;">
+      <img src="headshot.png" alt="Fares Amari" style="width:130px;height:130px;border-radius:50%;object-fit:cover;object-position:center top;border:3px solid rgba(79,142,247,0.4);display:block;">
+      <div>
+        <p style="font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--white);margin-bottom:0.2rem;">Fares Amari</p>
+        <p style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-top:0.2rem;">Solutions Engineering Leader</p>
+        <p style="font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-top:0.25rem;">Greater New Orleans Metropolitan Area</p>
+      </div>
+    </div>
+
+    <!-- Card 2: Resume -->
+    <div class="cta-block" style="display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <div class="cta-block-label">Resume</div>
+        <div class="cta-block-title">Download Full Resume</div>
+        <div class="cta-block-desc" style="margin-top:0.5rem;">PDF version of my complete career history, certifications, and achievements — ready to share with your team.</div>
+      </div>
+      <a href="Fares_Amari_Resume.pdf" download class="btn-primary" style="margin-top:1.5rem;text-align:center;justify-content:center;">Download PDF ↓</a>
+    </div>
+
+    <!-- Card 3: LinkedIn -->
+    <div class="cta-block" style="display:flex;flex-direction:column;justify-content:space-between;">
+      <div>
+        <div class="cta-block-label">LinkedIn</div>
+        <div class="cta-block-title">Connect &amp; Recommendations</div>
+        <div class="cta-block-desc" style="margin-top:0.5rem;">View my full LinkedIn profile, endorsements, and written recommendations from colleagues, customers, and leadership.</div>
+      </div>
+      <a href="https://linkedin.com/in/FaresAmari" target="_blank" class="btn-primary" style="margin-top:1.5rem;text-align:center;justify-content:center;">Connect on LinkedIn →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Fares Amari</span>
+  <span class="footer-copy">Solutions Engineering Leader · Greater New Orleans Metropolitan Area</span>
+</footer>
+
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Counter animation
+  function animateCounters() {
+    document.querySelectorAll('.counter').forEach(el => {
+      const target = +el.dataset.target;
+      const duration = 1800;
+      const start = performance.now();
+      function step(now) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target);
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .timeline-item');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Trigger counters when hero metrics are visible
+  const heroMetrics = document.querySelector('.hero-metrics');
+  let countersRun = false;
+  const counterObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting && !countersRun) {
+      countersRun = true;
+      animateCounters();
+    }
+  }, { threshold: 0.5 });
+  if (heroMetrics) counterObserver.observe(heroMetrics);
+</script>
+</body>
+</html>
